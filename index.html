@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<htmml lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WhatisyourWish</title>
+    
+    </head>
+    <body>
+        <h1 id="sound"></h1>
+        <input id="name" type="text">
+        <button onclick="getSound()">가라 소원아!</button>
+        <script>
+            function getSound(){
+                const name = document.getElementById( 'name').value
+                fetch(`http://localhost:8080/sound/${name}`)
+                .then((response)=> response.json())
+                .then((data)=> {
+                    console.log(data.sound)
+                    document.getElementById('name').innerHTML = data.sound
+                });
+            }
+
+        </script>
+    </body>
+     
+</htmml>
